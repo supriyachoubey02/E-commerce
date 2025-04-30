@@ -20,10 +20,12 @@ A basic e-commerce website built with node.js and mongo db  and JAVASCRIPT backe
 2.Install dependencies:
 
      npm install
+     npm install express mongoose body-parser cors express-session
      
 3.Start the frontend:
 
      npm start
+    
 
 4.Database
 
