@@ -1,6 +1,6 @@
 # My E-commerce Store
 
-A basic e-commerce website built with node.js and mongo db backend.
+A basic e-commerce website built with node.js and mongo db  and JAVASCRIPT backend.
 
 ## Tech Stack
 
