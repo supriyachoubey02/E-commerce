@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart - My E-commerce Store</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <header>
+        <h1>My Store</h1>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/cart">Cart (<%= cart ? cart.reduce((sum, item) => sum + item.quantity, 0) : 0 %>)</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="cart">
+            <h2>Shopping Cart</h2>
+            <% if (cart && cart.length > 0) { %>
+                <div class="cart-items">
+                    <% let totalPrice = 0; %>
+                    <% cart.forEach(item => { %>
+                        <div class="cart-item">
+                            <img src="<%= item.image %>" alt="<%= item.name %>">
+                            <div>
+                                <h4><%= item.name %></h4>
+                                <p>Price: $<%= item.price.toFixed(2) %></p>
+                                <p>Quantity: <%= item.quantity %></p>
+                                <form action="/cart/remove/<%= item.productId %>" method="post">
+                                    <button type="submit">Remove</button>
+                                </form>
+                            </div>
+                        </div>
+                        <% totalPrice += item.price * item.quantity; %>
+                    <% }); %>
+                </div>
+                <div class="cart-total">
+                    <strong>Total: $<%= totalPrice.toFixed(2) %></strong>
+                </div>
+                <a href="/checkout" class="button">Proceed to Checkout</a>
+            <% } else { %>
+                <p>Your cart is empty.</p>
+                <a href="/" class="button">Continue Shopping</a>
+            <% } %>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 My E-commerce Store</p>
+    </footer>
+</body>
+</html>

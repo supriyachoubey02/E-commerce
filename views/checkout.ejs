@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout - My E-commerce Store</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <header>
+        <h1>My Store</h1>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/cart">Cart (<%= cart ? cart.reduce((sum, item) => sum + item.quantity, 0) : 0 %>)</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="checkout">
+            <h2>Checkout</h2>
+            <% if (cart && cart.length > 0) { %>
+                <h3>Order Summary:</h3>
+                <div class="cart-items">
+                    <% let totalPrice = 0; %>
+                    <% cart.forEach(item => { %>
+                        <div class="cart-item">
+                            <img src="public/images/assets/frontend_assets/p_img50.png" alt="tawoo">
+                            <div>
+                                <h4>tawoo</h4>
+                                <p>Price: $<%= item.price.toFixed(2) %></p>
+                                <p>Quantity: <%= item.quantity %></p>
+                                <p>Subtotal: $<%= (item.price * item.quantity).toFixed(2) %></p>
+                            </div>
+                        </div>
+                        <% totalPrice += item.price * item.quantity; %>
+                    <% }); %>
+                </div>
+                <div class="cart-total">
+                    <strong>Total: $<%= totalPrice.toFixed(2) %></strong>
+                </div>
+                <p>This is a basic checkout page. Real payment integration would go here.</p>
+                <button class="button" disabled>Place Order (Not Implemented)</button>
+                <a href="/cart" class="button">Back to Cart</a>
+            <% } else { %>
+                <p>Your cart is empty. Nothing to checkout.</p>
+                <a href="/" class="button">Continue Shopping</a>
+            <% } %>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 My E-commerce Store</p>
+    </footer>
+</body>
+</html>
