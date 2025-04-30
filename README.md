@@ -15,6 +15,8 @@ A basic e-commerce website built with node.js and mongo db  and JAVASCRIPT backe
 
     git clone [https://github.com/supriyachoubey02/E-commerce.git](https://github.com/supriyachoubey02/E-commerce.git)
 
+   Server is running on http://localhost:3000
+
 2.Install dependencies:
 
      npm install
